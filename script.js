@@ -413,7 +413,3 @@ window.addEventListener("resize", () => {
     revealOnScroll();
 
 });
-
-/*=====================================
-  END OF SCRIPT.JS
-  =====================================*/
