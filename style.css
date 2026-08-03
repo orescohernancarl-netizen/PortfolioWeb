@@ -1091,9 +1091,11 @@ flex-direction:column;
 
 }
 
-.btn{
+.hero-buttons .btn{
 
 width:100%;
+
+}
 
 }
 
