@@ -1,44 +1,23 @@
 /*=====================================
-  DOM ELEMENTS
+  MOBILE MENU
 =====================================*/
-
-const body = document.body;
-const header = document.querySelector(".header");
 
 const menuBtn = document.getElementById("menu-btn");
 const navbar = document.getElementById("navbar");
 
-const themeToggle = document.getElementById("theme-toggle");
+menuBtn.addEventListener("click", () => {
+    navbar.classList.toggle("active");
 
-const typing = document.getElementById("typing");
+    const icon = menuBtn.querySelector("i");
 
-/*=====================================
-  MOBILE MENU
-=====================================*/
-
-if (menuBtn && navbar) {
-
-    menuBtn.addEventListener("click", () => {
-
-        navbar.classList.toggle("active");
-
-        const icon = menuBtn.querySelector("i");
-
-        if (navbar.classList.contains("active")) {
-
-            icon.classList.remove("fa-bars");
-            icon.classList.add("fa-xmark");
-
-        } else {
-
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
-
-        }
-
-    });
-
-}
+    if (navbar.classList.contains("active")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    } else {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+});
 
 /*=====================================
   CLOSE MENU WHEN LINK IS CLICKED
@@ -60,44 +39,45 @@ document.querySelectorAll(".navbar a").forEach(link => {
 });
 
 /*=====================================
-  DARK / LIGHT MODE
+  DARK MODE
 =====================================*/
 
-const savedTheme = localStorage.getItem("theme");
+const themeToggle = document.getElementById("theme-toggle");
 
-if (savedTheme === "light") {
+const body = document.body;
+
+if(localStorage.getItem("theme") === "light"){
 
     body.classList.add("light-theme");
 
+    themeToggle.innerHTML =
+    '<i class="fa-solid fa-sun"></i>';
+
 }
 
-updateThemeIcon();
-
-themeToggle.addEventListener("click", () => {
+themeToggle.addEventListener("click",()=>{
 
     body.classList.toggle("light-theme");
 
-    if (body.classList.contains("light-theme")) {
+    if(body.classList.contains("light-theme")){
 
-        localStorage.setItem("theme", "light");
+        localStorage.setItem("theme","light");
 
-    } else {
-
-        localStorage.setItem("theme", "dark");
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-sun"></i>';
 
     }
 
-    updateThemeIcon();
+    else{
+
+        localStorage.setItem("theme","dark");
+
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-moon"></i>';
+
+    }
 
 });
-
-function updateThemeIcon() {
-
-    themeToggle.innerHTML = body.classList.contains("light-theme")
-        ? '<i class="fa-solid fa-sun"></i>'
-        : '<i class="fa-solid fa-moon"></i>';
-
-}
 
 /*=====================================
   TYPING EFFECT
@@ -105,19 +85,13 @@ function updateThemeIcon() {
 
 const words = [
 
-    "Front-End Developer",
+"Web Developer",
 
-    "Back-End Developer",
+"Front-End Developer",
 
-    "Full Stack Developer",
+"UI Designer",
 
-    "PHP Developer",
-
-    "Python Developer",
-
-    "Laravel Developer",
-
-    "Flask Developer"
+"JavaScript Enthusiast"
 
 ];
 
@@ -125,37 +99,41 @@ let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-function typeEffect() {
+const typing = document.getElementById("typing");
 
-    if (!typing) return;
+function typeEffect(){
 
     const currentWord = words[wordIndex];
 
-    if (!deleting) {
+    if(!deleting){
 
-        typing.textContent = currentWord.substring(0, charIndex++);
+        typing.textContent =
+        currentWord.substring(0,charIndex++);
 
-        if (charIndex > currentWord.length) {
+        if(charIndex > currentWord.length){
 
             deleting = true;
 
-            setTimeout(typeEffect, 1500);
+            setTimeout(typeEffect,1500);
 
             return;
 
         }
 
-    } else {
+    }
 
-        typing.textContent = currentWord.substring(0, charIndex--);
+    else{
 
-        if (charIndex < 0) {
+        typing.textContent =
+        currentWord.substring(0,charIndex--);
+
+        if(charIndex < 0){
 
             deleting = false;
 
             wordIndex++;
 
-            if (wordIndex >= words.length) {
+            if(wordIndex >= words.length){
 
                 wordIndex = 0;
 
@@ -165,7 +143,7 @@ function typeEffect() {
 
     }
 
-    setTimeout(typeEffect, deleting ? 45 : 90);
+    setTimeout(typeEffect,deleting ? 50 : 100);
 
 }
 
@@ -175,62 +153,60 @@ typeEffect();
   SMOOTH SCROLL
 =====================================*/
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
-    anchor.addEventListener("click", function (e) {
+anchor.addEventListener("click",function(e){
 
-        const target = document.querySelector(this.getAttribute("href"));
+e.preventDefault();
 
-        if (!target) return;
+document.querySelector(this.getAttribute("href"))
+.scrollIntoView({
 
-        e.preventDefault();
+behavior:"smooth"
 
-        target.scrollIntoView({
+});
 
-            behavior: "smooth"
-
-        });
-
-    });
+});
 
 });
 
 /*=====================================
-  ACTIVE NAVBAR
+ ACTIVE NAVIGATION
 =====================================*/
 
 const sections = document.querySelectorAll("section");
+
 const navLinks = document.querySelectorAll(".navbar a");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    let current = "";
+let current="";
 
-    sections.forEach(section => {
+sections.forEach(section=>{
 
-        const top = section.offsetTop - 140;
-        const height = section.offsetHeight;
+const top=section.offsetTop-120;
 
-        if (window.scrollY >= top &&
-            window.scrollY < top + height) {
+const height=section.offsetHeight;
 
-            current = section.id;
+if(pageYOffset>=top){
 
-        }
+current=section.getAttribute("id");
 
-    });
+}
 
-    navLinks.forEach(link => {
+});
 
-        link.classList.remove("active");
+navLinks.forEach(link=>{
 
-        if (link.getAttribute("href") === "#" + current) {
+link.classList.remove("active");
 
-            link.classList.add("active");
+if(link.getAttribute("href")==="#"+current){
 
-        }
+link.classList.add("active");
 
-    });
+}
+
+});
 
 });
 /*=====================================
@@ -240,321 +216,191 @@ window.addEventListener("scroll", () => {
 const revealElements = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
-
-    const revealPoint = 120;
-
     revealElements.forEach(element => {
-
         const windowHeight = window.innerHeight;
-
         const revealTop = element.getBoundingClientRect().top;
+        const revealPoint = 120;
 
         if (revealTop < windowHeight - revealPoint) {
-
             element.classList.add("active");
-
         }
-
     });
-
 }
 
 window.addEventListener("scroll", revealOnScroll);
-
-window.addEventListener("load", revealOnScroll);
+revealOnScroll();
 
 /*=====================================
-  SCROLL TO TOP
+  SCROLL TO TOP BUTTON
 =====================================*/
 
 const scrollBtn = document.getElementById("scrollTop");
 
 window.addEventListener("scroll", () => {
 
-    if (!scrollBtn) return;
-
-    scrollBtn.style.display =
-        window.scrollY > 400 ? "flex" : "none";
-
-});
-
-if (scrollBtn) {
-
-    scrollBtn.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
-        });
-
-    });
-
-}
-
-/*=====================================
-  CONTACT FORM
-=====================================*/
-
-const contactForm =
-document.getElementById("contact-form");
-
-if(contactForm){
-
-contactForm.addEventListener("submit",function(e){
-
-e.preventDefault();
-
-const inputs =
-this.querySelectorAll("input, textarea");
-
-let valid=true;
-
-inputs.forEach(input=>{
-
-if(input.value.trim()===""){
-
-input.style.borderColor="#ff4d4d";
-
-valid=false;
-
-}else{
-
-input.style.borderColor=
-"rgba(255,255,255,.15)";
-
-}
-
-});
-
-if(!valid){
-
-alert("Please complete all fields.");
-
-return;
-
-}
-
-const submitBtn =
-this.querySelector("button");
-
-submitBtn.disabled=true;
-
-submitBtn.textContent="Sending...";
-
-setTimeout(()=>{
-
-alert("Message sent successfully!");
-
-this.reset();
-
-submitBtn.disabled=false;
-
-submitBtn.textContent="Send Message";
-
-},800);
-
-});
-
-}
-
-/*=====================================
-  HEADER SHADOW
-=====================================*/
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>50){
-
-header.classList.add("scrolled");
-
-}else{
-
-header.classList.remove("scrolled");
-
-}
-
-});
-
-/*=====================================
-  AUTO COPYRIGHT YEAR
-=====================================*/
-
-const copyright =
-document.querySelector(".copyright");
-
-if(copyright){
-
-copyright.innerHTML=
-`© ${new Date().getFullYear()} Hernan Oresco. All Rights Reserved.`;
-
-}
-
-/*=====================================
-  WINDOW RESIZE
-=====================================*/
-
-window.addEventListener("resize",()=>{
-
-revealOnScroll();
-
-});
-
-/*=====================================
-  REMOVE RIPPLE EFFECT
-=====================================*/
-
-/* Ripple intentionally removed.
-It caused the Send Message button
-to grow every click. */
-
-/*=====================================
-  PAGE LOADED
-=====================================*/
-
-window.addEventListener("load",()=>{
-
-document.body.classList.add("loaded");
-
-});
-/*=====================================
-  HERO 3D EFFECT
-=====================================*/
-
-const heroCard = document.querySelector(".profile-card");
-
-if (heroCard) {
-
-    document.addEventListener("mousemove", (e) => {
-
-        const rect = heroCard.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const rotateY = ((x / rect.width) - 0.5) * 18;
-        const rotateX = ((0.5 - y / rect.height)) * 18;
-
-        heroCard.style.transform =
-            `perspective(1000px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-8px)`;
-
-    });
-
-    heroCard.addEventListener("mouseleave", () => {
-
-        heroCard.style.transition = "0.4s ease";
-
-        heroCard.style.transform =
-            "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-
-    });
-
-    heroCard.addEventListener("mouseenter", () => {
-
-        heroCard.style.transition = "0s";
-
-    });
-
-}
-
-/*=====================================
-  CLOSE MOBILE MENU ON RESIZE
-=====================================*/
-
-window.addEventListener("resize", () => {
-
-    if (window.innerWidth > 768 && navbar) {
-
-        navbar.classList.remove("active");
-
-        const icon = menuBtn.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
+    if (window.scrollY > 400) {
+        scrollBtn.style.display = "flex";
+    } else {
+        scrollBtn.style.display = "none";
     }
 
 });
 
-/*=====================================
-  ESC KEY CLOSE MENU
-=====================================*/
+scrollBtn.addEventListener("click", () => {
 
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape" && navbar.classList.contains("active")) {
-
-        navbar.classList.remove("active");
-
-        const icon = menuBtn.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
-    }
-
-});
-
-/*=====================================
-  IMAGE FADE-IN
-=====================================*/
-
-window.addEventListener("load", () => {
-
-    document.querySelectorAll("img").forEach(img => {
-
-        img.style.opacity = "0";
-
-        img.onload = () => {
-
-            img.style.transition = ".6s ease";
-
-            img.style.opacity = "1";
-
-        };
-
-        if (img.complete) {
-
-            img.style.opacity = "1";
-
-        }
-
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
 });
 
 /*=====================================
-  PREVENT DOUBLE FORM SUBMIT
+  CONTACT FORM VALIDATION
 =====================================*/
+
+const contactForm = document.getElementById("contact-form");
 
 if (contactForm) {
 
-    let sending = false;
-
     contactForm.addEventListener("submit", function (e) {
 
-        if (sending) {
+        e.preventDefault();
 
-            e.preventDefault();
+        const inputs = this.querySelectorAll("input, textarea");
+
+        let valid = true;
+
+        inputs.forEach(input => {
+
+            if (input.value.trim() === "") {
+
+                input.style.border = "1px solid red";
+                valid = false;
+
+            } else {
+
+                input.style.border = "1px solid rgba(255,255,255,.15)";
+
+            }
+
+        });
+
+        if (!valid) {
+
+            alert("Please complete all fields.");
 
             return;
 
         }
 
-        sending = true;
+        alert("Message sent successfully!");
 
-        setTimeout(() => {
-
-            sending = false;
-
-        }, 1200);
+        this.reset();
 
     });
+
+}
+
+/*=====================================
+  FADE IN ON LOAD
+=====================================*/
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
+
+/*=====================================
+  HEADER SHADOW ON SCROLL
+=====================================*/
+
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.25)";
+
+    } else {
+
+        header.style.boxShadow = "none";
+
+    }
+
+});
+
+/*=====================================
+  BUTTON RIPPLE EFFECT
+=====================================*/
+
+document.querySelectorAll(".btn").forEach(button => {
+    button.addEventListener("click", function (e) {
+
+        const oldRipple = this.querySelector(".ripple");
+        if (oldRipple) oldRipple.remove();
+
+        const ripple = document.createElement("span");
+        ripple.className = "ripple";
+
+        const size = 120; // Fixed ripple size
+
+        ripple.style.width = size + "px";
+        ripple.style.height = size + "px";
+
+        const rect = this.getBoundingClientRect();
+
+        ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 500);
+    });
+});
+
+/*=====================================
+  PARALLAX HERO EFFECT
+=====================================*/
+
+const heroImage = document.querySelector(".profile-card");
+
+window.addEventListener("mousemove", (e) => {
+
+    if (!heroImage) return;
+
+    const x = (window.innerWidth / 2 - e.clientX) / 40;
+    const y = (window.innerHeight / 2 - e.clientY) / 40;
+
+    heroImage.style.transform =
+        `rotateY(${x}deg) rotateX(${-y}deg)`;
+
+});
+
+/*=====================================
+  RESET PARALLAX
+=====================================*/
+
+window.addEventListener("mouseleave", () => {
+
+    if (!heroImage) return;
+
+    heroImage.style.transform = "rotateY(0deg) rotateX(0deg)";
+
+});
+
+/*=====================================
+  YEAR AUTO UPDATE
+=====================================*/
+
+const copyright = document.querySelector(".copyright");
+
+if (copyright) {
+
+    copyright.innerHTML =
+        `© ${new Date().getFullYear()} Hernan Oresco. All Rights Reserved.`;
 
 }
 
@@ -562,21 +408,12 @@ if (contactForm) {
   PERFORMANCE
 =====================================*/
 
-window.addEventListener("scroll", () => {
+window.addEventListener("resize", () => {
 
-    requestAnimationFrame(() => {
-
-        revealOnScroll();
-
-    });
+    revealOnScroll();
 
 });
 
 /*=====================================
-  END OF SCRIPT
-=====================================*/
-
-console.log(
-"%cPortfolio Loaded Successfully 🚀",
-"color:#06b6d4;font-size:16px;font-weight:bold;"
-);
+  END OF SCRIPT.JS
+  =====================================*/
