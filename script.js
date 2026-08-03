@@ -274,49 +274,6 @@ scrollBtn.addEventListener("click", () => {
   CONTACT FORM
 =====================================*/
 
-const contactForm = document.getElementById("contact-form");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const inputs = this.querySelectorAll("input, textarea");
-
-        let valid = true;
-
-        inputs.forEach(input => {
-
-            if (input.value.trim() === "") {
-
-                input.style.borderColor = "#ef4444";
-
-                valid = false;
-
-            } else {
-
-                input.style.borderColor = "rgba(255,255,255,.15)";
-
-            }
-
-        });
-
-        if (!valid) {
-
-            alert("Please complete all required fields.");
-
-            return;
-
-        }
-
-        alert("Message sent successfully!");
-
-        this.reset();
-
-    });
-
-}
 
 /*=====================================
   HEADER SHADOW
