@@ -336,6 +336,30 @@ window.addEventListener("scroll", () => {
   BUTTON RIPPLE EFFECT
 =====================================*/
 
+document.querySelectorAll(".btn").forEach(button => {
+    button.addEventListener("click", function (e) {
+
+        const oldRipple = this.querySelector(".ripple");
+        if (oldRipple) oldRipple.remove();
+
+        const ripple = document.createElement("span");
+        ripple.className = "ripple";
+
+        const size = 120; // Fixed ripple size
+
+        ripple.style.width = size + "px";
+        ripple.style.height = size + "px";
+
+        const rect = this.getBoundingClientRect();
+
+        ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
+        ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 500);
+    });
+});
 
 /*=====================================
   PARALLAX HERO EFFECT
