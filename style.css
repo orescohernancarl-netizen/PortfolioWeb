@@ -442,7 +442,7 @@ NAV ICONS
 }
 
 /*==================================================
-BUTTONS
+PREMIUM BUTTONS
 ==================================================*/
 
 .btn{
@@ -457,11 +457,13 @@ BUTTONS
 
     gap:10px;
 
-    padding:14px 34px;
+    padding:15px 36px;
+
+    min-height:56px;
 
     border:none;
 
-    border-radius:50px;
+    border-radius:999px;
 
     cursor:pointer;
 
@@ -469,255 +471,187 @@ BUTTONS
 
     font-weight:600;
 
+    letter-spacing:.4px;
+
     overflow:hidden;
 
     transition:.35s ease;
 
+    user-select:none;
+
+    isolation:isolate;
+
 }
+
+/* Glow Effect */
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    padding:1px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.5),
+        transparent,
+        rgba(255,255,255,.25)
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+    pointer-events:none;
+
+}
+
+/* Shine Animation */
+
+.btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+
+    left:-130%;
+
+    width:55%;
+
+    height:220%;
+
+    background:rgba(255,255,255,.25);
+
+    transform:rotate(25deg);
+
+    transition:.7s;
+
+}
+
+.btn:hover::after{
+
+    left:150%;
+
+}
+
+/* PRIMARY */
 
 .btn.primary{
 
     color:#fff;
 
     background:linear-gradient(
-    45deg,
-    var(--primary),
-    var(--secondary));
+        135deg,
+        #6366f1,
+        #7c3aed,
+        #06b6d4
+    );
+
+    background-size:200%;
+
+    box-shadow:
+        0 12px 30px rgba(79,70,229,.35),
+        inset 0 1px 1px rgba(255,255,255,.25);
 
 }
 
 .btn.primary:hover{
 
-    transform:translateY(-4px);
+    background-position:right center;
 
-    box-shadow:0 10px 30px rgba(79,70,229,.45);
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 20px 45px rgba(79,70,229,.45);
 
 }
 
+/* SECONDARY */
+
 .btn.secondary{
 
-    background:transparent;
+    background:rgba(255,255,255,.05);
 
     color:#fff;
 
-    border:2px solid var(--primary);
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
 
 }
 
 .btn.secondary:hover{
 
-    background:var(--primary);
+    background:rgba(99,102,241,.18);
+
+    border-color:#6366f1;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(79,70,229,.25);
 
 }
 
-/* Project Buttons */
+/* SMALL BUTTON */
 
 .btn.small{
 
-    padding:10px 22px;
+    padding:12px 26px;
+
+    min-height:46px;
 
     font-size:1.4rem;
 
 }
 
+/* OUTLINE */
+
 .outline{
 
     background:transparent;
 
-    border:2px solid var(--primary);
+    border:2px solid #6366f1;
 
 }
 
 .outline:hover{
 
-    background:var(--primary);
+    background:#6366f1;
 
     color:#fff;
-
-}
-
-/*==================================================
-REMOVE RIPPLE BUG
-==================================================*/
-
-
-.ripple{
-
-    display:none !important;
-
-}
-/*==================================================
-HERO SECTION
-==================================================*/
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:80px;
-
-    padding:140px 8% 80px;
-
-}
-
-.hero-content{
-
-    flex:1;
-
-    animation:fadeLeft .8s ease;
-
-}
-
-.subtitle{
-
-    display:inline-block;
-
-    font-size:2rem;
-
-    font-weight:600;
-
-    color:var(--accent);
-
-    margin-bottom:18px;
-
-}
-
-.hero h1{
-
-    font-size:6rem;
-
-    font-weight:800;
-
-    line-height:1.1;
-
-    margin-bottom:12px;
-
-}
-
-.hero h2{
-
-    font-size:3rem;
-
-    color:var(--gray);
-
-    min-height:45px;
-
-    margin-bottom:25px;
-
-}
-
-.hero-description{
-
-    max-width:650px;
-
-    font-size:1.8rem;
-
-    color:#b7c0ca;
-
-    margin-bottom:35px;
-
-    line-height:1.8;
-
-}
-
-.hero-description strong{
-
-    color:var(--accent);
 
 }
 .hero-buttons{
 
     display:flex;
 
-    align-items:center;
-
-    justify-content:flex-start;
-
     gap:20px;
 
     flex-wrap:wrap;
 
-    margin-top:15px;
+    align-items:center;
 
-    margin-bottom:40px;
+    margin:40px 0;
 
 }
 
 .hero-buttons .btn{
 
-    min-width:180px;
+    min-width:190px;
 
-    height:55px;
-
-    padding:0 32px;
-
-    border-radius:50px;
-
-    font-size:1.6rem;
-
-    font-weight:600;
-
-    transition:.35s ease;
-
-}
-
-.hero-buttons .btn:hover{
-
-    transform:translateY(-5px) scale(1.03);
-
-}
-/*==================================================
-SOCIAL ICONS
-==================================================*/
-
-.social-icons{
-
-    display:flex;
-
-    gap:18px;
-
-}
-
-.social-icons a{
-
-    width:52px;
-
-    height:52px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    background:var(--glass);
-
-    color:#fff;
-
-    font-size:2rem;
-
-    border:1px solid var(--border);
-
-    transition:.35s ease;
-
-}
-
-.social-icons a:hover{
-
-    background:linear-gradient(
-    45deg,
-    var(--primary),
-    var(--secondary));
-
-    transform:translateY(-6px) rotate(8deg);
+    height:58px;
 
 }
 
