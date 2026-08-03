@@ -294,6 +294,9 @@ border:none;
 
 outline:none;
 
+position:relative;
+overflow:hidden;
+
 }
 
 
@@ -1447,5 +1450,32 @@ animation:zoomIn .8s ease forwards;
 .pulse{
 
 animation:pulse 2s infinite;
+
+}
+.ripple{
+
+position:absolute;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.4);
+
+transform:scale(0);
+
+animation:rippleEffect .6s linear;
+
+pointer-events:none;
+
+}
+
+@keyframes rippleEffect{
+
+to{
+
+transform:scale(4);
+
+opacity:0;
+
+}
 
 }

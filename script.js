@@ -338,26 +338,31 @@ window.addEventListener("scroll", () => {
 
 document.querySelectorAll(".btn").forEach(button => {
 
-    button.addEventListener("click", function (e) {
+    button.addEventListener("click", function(e){
 
-        const circle = document.createElement("span");
+        const ripple = document.createElement("span");
 
-        const diameter = Math.max(this.clientWidth, this.clientHeight);
-        const radius = diameter / 2;
+        const rect = this.getBoundingClientRect();
 
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${e.clientX - this.getBoundingClientRect().left - radius}px`;
-        circle.style.top = `${e.clientY - this.getBoundingClientRect().top - radius}px`;
+        const size = Math.max(rect.width, rect.height);
 
-        circle.classList.add("ripple");
+        ripple.style.width = ripple.style.height = size + "px";
 
-        const ripple = this.getElementsByClassName("ripple")[0];
+        ripple.style.left =
+        e.clientX - rect.left - size / 2 + "px";
 
-        if (ripple) {
+        ripple.style.top =
+        e.clientY - rect.top - size / 2 + "px";
+
+        ripple.classList.add("ripple");
+
+        this.appendChild(ripple);
+
+        setTimeout(()=>{
+
             ripple.remove();
-        }
 
-        this.appendChild(circle);
+        },600);
 
     });
 
