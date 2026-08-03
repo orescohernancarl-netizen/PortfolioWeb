@@ -286,11 +286,16 @@ font-size:1.6rem;
 
 font-weight:600;
 
-transition:.35s;
+transition:0.35s ease;
 
 cursor:pointer;
 
+border:none;
+
+outline:none;
+
 }
+
 
 .primary{
 
@@ -306,7 +311,7 @@ color:white;
 
 .primary:hover{
 
-transform:translateY(-5px);
+transform:translateY(-3px);
 
 box-shadow:0 10px 30px rgba(79,70,229,.5);
 
