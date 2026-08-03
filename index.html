@@ -1,31 +1,43 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hernan Oresco | Web Developer</title>
 
-    <!-- Google Fonts -->
+    <title>Hernan Oresco | Full Stack Web Developer</title>
+
+    <meta name="description"
+        content="Portfolio of Hernan Oresco - BSIT Student | Front-End & Back-End Web Developer">
+
+    <meta name="keywords"
+        content="Portfolio, HTML, CSS, JavaScript, PHP, Python, Flask, Laravel, MySQL">
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!--================ NAVIGATION ================-->
 
 <header class="header">
 
-    <a href="logo.jpg" class="logo">
-        Portfolio<span>.</span>
+    <a href="#index" class="logo">
+        Hernan<span>.</span>
     </a>
 
     <nav class="navbar" id="navbar">
@@ -42,11 +54,13 @@
 
     <div class="nav-icons">
 
-        <button id="theme-toggle">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" aria-label="Toggle Theme">
             <i class="fa-solid fa-moon"></i>
         </button>
 
-        <button id="menu-btn">
+        <!-- Mobile Menu -->
+        <button id="menu-btn" aria-label="Open Navigation">
             <i class="fa-solid fa-bars"></i>
         </button>
 
@@ -54,72 +68,97 @@
 
 </header>
 
-<!-- ================= HERO ================= -->
+<!--================ HERO ================-->
 
-<section class="hero" id="index">
+<section class="hero section" id="index">
 
-    <div class="hero-content">
+    <div class="hero-content fade-left">
 
-        <p class="subtitle">
-            Hello, I'm
-        </p>
+        <span class="subtitle">
+            👋 Hello, I'm
+        </span>
 
         <h1>
             Hernan Oresco
         </h1>
 
         <h2>
+
             <span id="typing"></span>
+
         </h2>
 
         <p class="hero-description">
 
-            Passionate BSIT student and aspiring Front-End & Back-End Web Developer.
-            I build modern, responsive, and interactive websites using
-            HTML, CSS, and JavaScript while continuously learning new
-            technologies.
+            I'm a <strong>BSIT Student</strong> and aspiring
+            <strong>Full Stack Web Developer</strong> specializing in
+            modern, responsive, and interactive web applications.
+
+            I enjoy building websites using
+            <strong>HTML, CSS, JavaScript, PHP, Python, Flask,
+            Laravel, and MySQL</strong> while continuously learning
+            new technologies and best practices.
 
         </p>
 
         <div class="hero-buttons">
 
             <a href="#projects" class="btn primary">
+
+                <i class="fa-solid fa-code"></i>
+
                 View Projects
+
             </a>
 
             <a href="#contact" class="btn secondary">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
                 Contact Me
+
             </a>
 
         </div>
 
         <div class="social-icons">
 
-            <a href="#">
+            <a href="https://github.com/orescohernancarl-netizen"
+                target="_blank">
+
                 <i class="fab fa-github"></i>
+
             </a>
 
             <a href="#">
+
                 <i class="fab fa-linkedin"></i>
+
             </a>
 
-            <a href="https://www.facebook.com/share/1EKq65Cr6e/">
+            <a href="https://www.facebook.com/share/1EKq65Cr6e/"
+                target="_blank">
+
                 <i class="fab fa-facebook"></i>
+
             </a>
 
             <a href="#">
+
                 <i class="fab fa-instagram"></i>
+
             </a>
 
         </div>
 
     </div>
 
-    <div class="hero-image">
+    <div class="hero-image fade-right">
 
-        <div class="profile-card">
+        <div class="profile-card glass">
 
-            <img src="logo.jpg" alt="Profile">
+            <img src="logo.jpg"
+                alt="Hernan Oresco Profile Picture">
 
             <div class="circle one"></div>
             <div class="circle two"></div>
@@ -129,10 +168,9 @@
     </div>
 
 </section>
+<!--================ ABOUT =================-->
 
-<!-- ================= ABOUT ================= -->
-
-<section class="about section" id="about">
+<section class="about section reveal" id="about">
 
     <div class="container">
 
@@ -144,65 +182,57 @@
 
             <div class="about-image">
 
-                <img src="profile.jpg" alt="About">
+                <img src="profile.jpg" alt="Hernan Oresco">
 
             </div>
 
             <div class="about-content">
 
                 <h3>
-                    Entry-Level Web Developer
+                    Full Stack Web Developer
                 </h3>
 
                 <p>
 
-                    I am a Bachelor of Science in Information Technology
-                    student passionate about creating clean, responsive,
-                    and user-friendly websites. I enjoy turning ideas into
-                    interactive digital experiences.
+                    I'm <strong>Hernan Oresco</strong>, a Bachelor of Science in
+                    Information Technology student from the
+                    <strong>University of Iloilo</strong>.
+
+                    I enjoy designing and developing modern websites that are
+                    responsive, user-friendly, and optimized for performance.
 
                 </p>
 
                 <p>
 
-                    My goal is to become a professional Front-End | Back-End Web Developer
-                    and continuously improve my skills in modern web
-                    technologies.
+                    My goal is to become a professional
+                    <strong>Full Stack Web Developer</strong>,
+                    specializing in Front-End, Back-End,
+                    APIs, and Database Management while continuously learning
+                    new technologies and industry best practices.
 
                 </p>
 
                 <div class="about-info">
 
                     <div>
-
                         <span>Name</span>
-
                         <h4>Hernan Oresco</h4>
-
                     </div>
 
                     <div>
-
                         <span>Email</span>
-
                         <h4>orescohernancarl@email.com</h4>
-
                     </div>
 
                     <div>
-
                         <span>Location</span>
-
                         <h4>Philippines</h4>
-
                     </div>
 
                     <div>
-
                         <span>Status</span>
-
-                        <h4>Available</h4>
-
+                        <h4>Available for Internship</h4>
                     </div>
 
                 </div>
@@ -215,52 +245,176 @@
 
 </section>
 
-<!-- ================= SKILLS ================= -->
+<!--================ SKILLS =================-->
 
-<section class="skills section" id="skills">
+<section class="skills section reveal" id="skills">
 
 <div class="container">
 
 <h2 class="section-title">
-Skills
+Technical Skills
 </h2>
 
 <div class="skills-grid">
 
+<!-- Frontend -->
+
 <div class="skill-card">
+
 <i class="fa-brands fa-html5"></i>
+
 <h3>HTML5</h3>
-<p>Semantic and accessible websites.</p>
+
+<p>
+Semantic and accessible web structure.
+</p>
+
 </div>
 
 <div class="skill-card">
+
 <i class="fa-brands fa-css3-alt"></i>
+
 <h3>CSS3</h3>
-<p>Responsive layouts and animations.</p>
+
+<p>
+Responsive layouts, Flexbox, Grid,
+Glassmorphism and Animations.
+</p>
+
 </div>
 
 <div class="skill-card">
+
 <i class="fa-brands fa-js"></i>
+
 <h3>JavaScript</h3>
-<p>Interactive user interfaces.</p>
+
+<p>
+Interactive websites using modern ES6+
+JavaScript.
+</p>
+
+</div>
+
+<!-- Backend -->
+
+<div class="skill-card">
+
+<i class="fa-brands fa-python"></i>
+
+<h3>Python</h3>
+
+<p>
+Backend programming, scripting,
+and automation.
+</p>
+
 </div>
 
 <div class="skill-card">
+
+<i class="fa-solid fa-server"></i>
+
+<h3>Flask</h3>
+
+<p>
+Building lightweight Python web
+applications and REST APIs.
+</p>
+
+</div>
+
+<div class="skill-card">
+
+<i class="fa-brands fa-php"></i>
+
+<h3>PHP</h3>
+
+<p>
+Dynamic server-side web development.
+</p>
+
+</div>
+
+<div class="skill-card">
+
+<i class="fa-brands fa-laravel"></i>
+
+<h3>Laravel</h3>
+
+<p>
+Modern PHP framework for scalable
+web applications.
+</p>
+
+</div>
+
+<!-- Database -->
+
+<div class="skill-card">
+
+<i class="fa-solid fa-database"></i>
+
+<h3>MySQL</h3>
+
+<p>
+Database design, CRUD operations,
+and relational database management.
+</p>
+
+</div>
+
+<!-- Tools -->
+
+<div class="skill-card">
+
 <i class="fa-brands fa-git-alt"></i>
+
 <h3>Git</h3>
-<p>Version control and collaboration.</p>
+
+<p>
+Version control and collaboration.
+</p>
+
 </div>
 
 <div class="skill-card">
+
 <i class="fa-brands fa-github"></i>
+
 <h3>GitHub</h3>
-<p>Project hosting and repositories.</p>
+
+<p>
+Repository management and project hosting.
+</p>
+
 </div>
 
 <div class="skill-card">
-<i class="fa-solid fa-mobile-screen"></i>
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
 <h3>Responsive Design</h3>
-<p>Desktop, tablet, and mobile ready.</p>
+
+<p>
+Desktop, tablet and mobile optimized
+interfaces.
+</p>
+
+</div>
+
+<div class="skill-card">
+
+<i class="fa-solid fa-code"></i>
+
+<h3>Problem Solving</h3>
+
+<p>
+Debugging, logical thinking,
+and clean coding practices.
+</p>
+
 </div>
 
 </div>
@@ -268,51 +422,104 @@ Skills
 </div>
 
 </section>
+<!--================ PROJECTS =================-->
 
- <!-- ================= PROJECTS ================= -->
-
-<section class="projects section" id="projects">
+<section class="projects section reveal" id="projects">
 
     <div class="container">
 
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title">Featured Projects</h2>
 
         <div class="projects-grid">
 
-            <div class="project-card">
+            <div class="project-card glass">
+
                 <img src="assets/project1.jpg" alt="Portfolio Website">
+
                 <div class="project-content">
+
                     <h3>Personal Portfolio</h3>
-                    <p>A responsive portfolio website built using HTML, CSS, and JavaScript.</p>
+
+                    <p>
+                        A modern responsive portfolio website built with
+                        HTML, CSS and JavaScript featuring animations,
+                        dark mode, glassmorphism and mobile responsiveness.
+                    </p>
+
                     <div class="project-links">
-                        <a href="#" class="btn small">Live Demo</a>
-                        <a href="#" class="btn small outline">GitHub</a>
+
+                        <a href="#" class="btn small primary">
+                            Live Demo
+                        </a>
+
+                        <a href="https://github.com/orescohernancarl-netizen"
+                           target="_blank"
+                           class="btn small outline">
+                            GitHub
+                        </a>
+
                     </div>
+
                 </div>
+
             </div>
 
-            <div class="project-card">
-                <img src="assets/project2.jpg" alt="Weather App">
+            <div class="project-card glass">
+
+                <img src="assets/project2.jpg" alt="Student Management">
+
                 <div class="project-content">
-                    <h3>Weather App</h3>
-                    <p>Displays real-time weather information using a public API.</p>
+
+                    <h3>Student Management System</h3>
+
+                    <p>
+                        CRUD application using PHP, MySQL and Laravel
+                        with authentication and database integration.
+                    </p>
+
                     <div class="project-links">
-                        <a href="#" class="btn small">Live Demo</a>
-                        <a href="#" class="btn small outline">GitHub</a>
+
+                        <a href="#" class="btn small primary">
+                            Live Demo
+                        </a>
+
+                        <a href="#" class="btn small outline">
+                            GitHub
+                        </a>
+
                     </div>
+
                 </div>
+
             </div>
 
-            <div class="project-card">
-                <img src="assets/project3.jpg" alt="Task Manager">
+            <div class="project-card glass">
+
+                <img src="assets/project3.jpg" alt="Flask Project">
+
                 <div class="project-content">
-                    <h3>Task Manager</h3>
-                    <p>A simple to-do application with local storage support.</p>
+
+                    <h3>Python Flask API</h3>
+
+                    <p>
+                        RESTful API built using Python Flask connected
+                        with MySQL database.
+                    </p>
+
                     <div class="project-links">
-                        <a href="#" class="btn small">Live Demo</a>
-                        <a href="#" class="btn small outline">GitHub</a>
+
+                        <a href="#" class="btn small primary">
+                            Live Demo
+                        </a>
+
+                        <a href="#" class="btn small outline">
+                            GitHub
+                        </a>
+
                     </div>
+
                 </div>
+
             </div>
 
         </div>
@@ -321,174 +528,262 @@ Skills
 
 </section>
 
-<!-- ================= EXPERIENCE ================= -->
+<!--================ EXPERIENCE =================-->
 
-<section class="experience section" id="experience">
+<section class="experience section reveal" id="experience">
 
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">Experience</h2>
+<h2 class="section-title">
+Experience
+</h2>
 
-        <div class="timeline">
+<div class="timeline">
 
-            <div class="timeline-item">
-                <span class="year">2026 - Present</span>
-                <h3>Personal Web Projects</h3>
-                <p>
-                    Developed responsive websites and web applications using
-                    HTML, CSS, and JavaScript while learning modern web development.
-                </p>
-            </div>
+<div class="timeline-item glass">
 
-            <div class="timeline-item">
-                <span class="year">University Projects</span>
-                <h3>BSIT Student</h3>
-                <p>
-                    Completed academic web development projects, collaborated
-                    with classmates, and practiced Git/GitHub workflows.
-                </p>
-            </div>
+<span class="year">
+2026 - Present
+</span>
 
-        </div>
+<h3>Personal Web Development</h3>
 
-    </div>
+<p>
 
-</section>
+Developing responsive websites,
+learning frontend and backend
+development while building personal
+projects using HTML, CSS,
+JavaScript, PHP, Flask and MySQL.
 
-<!-- ================= EDUCATION ================= -->
+</p>
 
-<section class="education section" id="education">
+</div>
 
-    <div class="container">
+<div class="timeline-item glass">
 
-        <h2 class="section-title">Education</h2>
+<span class="year">
+University Projects
+</span>
 
-        <div class="education-card">
+<h3>BSIT Student</h3>
 
-            <h3>Bachelor of Science in Information Technology</h3>
+<p>
 
-            <p>University of Iloilo</p>
+Building academic software projects,
+database systems and collaborative
+GitHub repositories while improving
+problem-solving and programming skills.
 
-            <span>2023 - Present</span>
+</p>
 
-            <p>
-                Learning software development, databases, networking,
-                web development, and programming fundamentals.
-            </p>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!--================ EDUCATION =================-->
 
-<section class="contact section" id="contact">
+<section class="education section reveal" id="education">
 
-    <div class="container">
+<div class="container">
 
-        <h2 class="section-title">Contact Me</h2>
+<h2 class="section-title">
+Education
+</h2>
 
-        <div class="contact-wrapper">
+<div class="education-card glass">
 
-            <div class="contact-info">
+<h3>
+Bachelor of Science in Information Technology
+</h3>
 
-                <h3>Let's Work Together</h3>
+<p>
+University of Iloilo
+</p>
 
-                <p>
-                    I'm open to internships, freelance projects,
-                    and entry-level web development opportunities.
-                </p>
+<span>
+2023 - Present
+</span>
 
-                <ul>
+<p>
 
-                    <li>
-                        <i class="fa-solid fa-envelope"></i>
-                        orescohernancarl@email.com
-                    </li>
+Currently studying programming,
+database management,
+software engineering,
+web development,
+networking and system analysis.
 
-                    <li>
-                        <i class="fa-solid fa-phone"></i>
-                        +63 9927012992
-                    </li>
+</p>
 
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        Philippines
-                    </li>
+</div>
 
-                </ul>
-
-            </div>
-
-            <form id="contact-form">
-
-                <input
-                    type="text"
-                    placeholder="Your Name"
-                    required>
-
-                <input
-                    type="email"
-                    placeholder="Email Address"
-                    required>
-
-                <input
-                    type="text"
-                    placeholder="Subject"
-                    required>
-
-                <textarea
-                    rows="6"
-                    placeholder="Your Message"
-                    required></textarea>
-
-                <button type="submit" class="btn primary">
-                    Send Message
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!--================ CONTACT =================-->
+
+<section class="contact section reveal" id="contact">
+
+<div class="container">
+
+<h2 class="section-title">
+Contact Me
+</h2>
+
+<div class="contact-wrapper">
+
+<div class="contact-info">
+
+<h3>
+Let's Build Something Together
+</h3>
+
+<p>
+
+I'm currently looking for
+internships,
+freelance opportunities
+and entry-level web developer positions.
+
+</p>
+
+<ul>
+
+<li>
+
+<i class="fa-solid fa-envelope"></i>
+
+orescohernancarl@email.com
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-phone"></i>
+
++63 992 701 2992
+
+</li>
+
+<li>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Philippines
+
+</li>
+
+</ul>
+
+</div>
+
+<form id="contact-form">
+
+<input
+type="text"
+placeholder="Your Name"
+required>
+
+<input
+type="email"
+placeholder="Email Address"
+required>
+
+<input
+type="text"
+placeholder="Subject"
+required>
+
+<textarea
+rows="6"
+placeholder="Your Message"
+required></textarea>
+
+<button
+type="submit"
+class="btn primary">
+
+<i class="fa-solid fa-paper-plane"></i>
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!--================ FOOTER =================-->
 
 <footer class="footer">
 
-    <div class="container">
+<div class="container">
 
-        <h3>Hernan Oresco</h3>
+<h3>
 
-        <p>
-            Building modern, responsive, and user-friendly websites.
-        </p>
+Hernan Oresco
 
-        <div class="footer-social">
+</h3>
 
-            <a href="https://github.com/orescohernancarl-netizen"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.facebook.com/share/1EKq65Cr6e/"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+<p>
 
-        </div>
+Full Stack Web Developer |
+BSIT Student
 
-        <p class="copyright">
-            © 2026 Hernan Oresco. All Rights Reserved.
-        </p>
+</p>
 
-    </div>
+<div class="footer-social">
+
+<a href="https://github.com/orescohernancarl-netizen" target="_blank">
+
+<i class="fab fa-github"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fab fa-linkedin"></i>
+
+</a>
+
+<a href="https://www.facebook.com/share/1EKq65Cr6e/" target="_blank">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+</div>
+
+<p class="copyright">
+
+© 2026 Hernan Oresco.
+All Rights Reserved.
+
+</p>
+
+</div>
 
 </footer>
 
-<!-- Scroll To Top -->
-
 <button id="scrollTop">
-    <i class="fa-solid fa-arrow-up"></i>
+
+<i class="fa-solid fa-arrow-up"></i>
+
 </button>
 
 <script src="script.js"></script>
