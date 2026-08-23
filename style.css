@@ -1765,12 +1765,6 @@ body.light-theme .timeline p {
         flex-shrink: 0;
     }
 
-    /*
-      IMPORTANT:
-      The navbar is fixed to the viewport instead of
-      being absolute inside the scrolling page.
-    */
-
     .navbar {
         position: fixed;
 
@@ -1810,20 +1804,12 @@ body.light-theme .timeline p {
 
         z-index: 999;
 
-        /*
-          Prevent the menu itself from moving
-          horizontally while scrolling.
-        */
         transform: translateX(0);
 
         transition:
             opacity 0.25s ease,
             visibility 0.25s ease;
     }
-
-    /*
-      Hidden state
-    */
 
     .navbar:not(.active) {
         opacity: 0;
@@ -1832,10 +1818,6 @@ body.light-theme .timeline p {
 
         pointer-events: none;
     }
-
-    /*
-      Open state
-    */
 
     .navbar.active {
         opacity: 1;
@@ -1865,11 +1847,6 @@ body.light-theme .timeline p {
 
         color: var(--accent);
     }
-
-    /*
-      Prevent page scrolling from causing
-      weird horizontal movement.
-    */
 
     body.menu-open {
         overflow: hidden;
@@ -1963,8 +1940,9 @@ body.light-theme .timeline p {
         padding: 15px 5%;
     }
 
+    /* FIXED: HERNAN LOGO SIZE */
     .logo {
-        font-size: 2.6rem;
+        font-size: 2rem;
     }
 
     .hero {
