@@ -340,50 +340,48 @@ document
     .querySelectorAll('a[href^="#"]')
     .forEach(anchor => {
 
-        anchor.addEventListener(
-            "click",
-            function(e) {
+        anchor.addEventListener("click", function(e) {
 
-                const href =
-                    this.getAttribute("href");
+            const href = this.getAttribute("href");
 
-
-                if (
-                    !href ||
-                    href === "#"
-                ) {
-                    return;
-                }
-
-
-                const target =
-                    document.querySelector(href);
-
-
-                if (target) {
-
-                    e.preventDefault();
-
-
-                    // Close mobile menu first
-                    closeMobileMenu();
-
-
-                    // Small delay prevents menu animation
-                    // from affecting the scroll position
-                    setTimeout(() => {
-
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
-
-                    }, 50);
-
-                }
-
+            if (!href || href === "#") {
+                return;
             }
-        );
+
+            const target = document.querySelector(href);
+
+            if (!target) {
+                return;
+            }
+
+            e.preventDefault();
+
+            // Close mobile menu
+            closeMobileMenu();
+
+            /*
+              Calculate the target position manually.
+              This works more reliably with fixed headers
+              and embedded/internal browsers.
+            */
+
+            const header =
+                document.querySelector(".header");
+
+            const headerHeight =
+                header ? header.offsetHeight : 0;
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth"
+            });
+
+        });
 
     });
 
