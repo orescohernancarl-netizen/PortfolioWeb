@@ -358,11 +358,7 @@ document
             // Close mobile menu
             closeMobileMenu();
 
-            /*
-              Calculate the target position manually.
-              This works more reliably with fixed headers
-              and embedded/internal browsers.
-            */
+
 
             const header =
                 document.querySelector(".header");
