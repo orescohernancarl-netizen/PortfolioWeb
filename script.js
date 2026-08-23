@@ -240,7 +240,6 @@ if (themeBtn) {
 
 const words = [
 
-    "Full Stack Web Developer",
     "Front-End Developer",
     "Back-End Developer",
     "BSIT Student"
