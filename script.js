@@ -5,23 +5,67 @@
 const menuBtn = document.getElementById("menu-btn");
 const navbar = document.getElementById("navbar");
 
+
+function openMobileMenu() {
+
+    if (!navbar || !menuBtn) return;
+
+    navbar.classList.add("active");
+
+    // Prevent the page behind the menu from scrolling
+    document.body.classList.add("menu-open");
+
+    const icon = menuBtn.querySelector("i");
+
+    if (icon) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    }
+
+    menuBtn.setAttribute("aria-expanded", "true");
+}
+
+
+function closeMobileMenu() {
+
+    if (!navbar || !menuBtn) return;
+
+    navbar.classList.remove("active");
+
+    // Allow page scrolling again
+    document.body.classList.remove("menu-open");
+
+    const icon = menuBtn.querySelector("i");
+
+    if (icon) {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+
+    menuBtn.setAttribute("aria-expanded", "false");
+}
+
+
+function toggleMobileMenu() {
+
+    if (!navbar) return;
+
+    if (navbar.classList.contains("active")) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+
+}
+
+
 if (menuBtn && navbar) {
 
-    menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click", (e) => {
 
-        navbar.classList.toggle("active");
+        e.stopPropagation();
 
-        const icon = menuBtn.querySelector("i");
-
-        if (icon) {
-
-            if (navbar.classList.contains("active")) {
-                icon.classList.replace("fa-bars", "fa-xmark");
-            } else {
-                icon.classList.replace("fa-xmark", "fa-bars");
-            }
-
-        }
+        toggleMobileMenu();
 
     });
 
@@ -29,22 +73,16 @@ if (menuBtn && navbar) {
 
 
 /*=====================================
-  CLOSE MENU WHEN LINK IS CLICKED
+  CLOSE MENU WHEN NAV LINK IS CLICKED
 =====================================*/
 
-if (navbar && menuBtn) {
+if (navbar) {
 
-    document.querySelectorAll(".navbar a").forEach(link => {
+    navbar.querySelectorAll("a").forEach(link => {
 
         link.addEventListener("click", () => {
 
-            navbar.classList.remove("active");
-
-            const icon = menuBtn.querySelector("i");
-
-            if (icon) {
-                icon.classList.replace("fa-xmark", "fa-bars");
-            }
+            closeMobileMenu();
 
         });
 
@@ -54,16 +92,63 @@ if (navbar && menuBtn) {
 
 
 /*=====================================
+  CLOSE MENU WHEN CLICKING OUTSIDE
+=====================================*/
+
+document.addEventListener("click", (e) => {
+
+    if (!navbar || !menuBtn) return;
+
+    const clickedInsideNavbar =
+        navbar.contains(e.target);
+
+    const clickedMenuButton =
+        menuBtn.contains(e.target);
+
+    if (
+        navbar.classList.contains("active") &&
+        !clickedInsideNavbar &&
+        !clickedMenuButton
+    ) {
+
+        closeMobileMenu();
+
+    }
+
+});
+
+
+/*=====================================
+  CLOSE MENU WITH ESCAPE
+=====================================*/
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        closeMobileMenu();
+
+    }
+
+});
+
+
+/*=====================================
   THEME TOGGLE
 =====================================*/
 
-const themeBtn = document.getElementById("theme-toggle");
-const body = document.body;
+const themeBtn =
+    document.getElementById("theme-toggle");
+
+const body =
+    document.body;
 
 
-/* Set theme when page loads */
+/* Get saved theme */
 
-const savedTheme = localStorage.getItem("theme");
+const savedTheme =
+    localStorage.getItem("theme");
+
 
 if (savedTheme === "light") {
 
@@ -76,37 +161,47 @@ if (savedTheme === "light") {
 }
 
 
-/* Update theme button icon */
+/*=====================================
+  UPDATE THEME ICON
+=====================================*/
 
 function updateThemeIcon() {
 
     if (!themeBtn) return;
 
-    if (body.classList.contains("light-theme")) {
+    if (
+        body.classList.contains("light-theme")
+    ) {
 
         themeBtn.innerHTML =
             '<i class="fa-solid fa-sun"></i>';
 
-        themeBtn.setAttribute("aria-label", "Switch to dark mode");
+        themeBtn.setAttribute(
+            "aria-label",
+            "Switch to dark mode"
+        );
 
     } else {
 
         themeBtn.innerHTML =
             '<i class="fa-solid fa-moon"></i>';
 
-        themeBtn.setAttribute("aria-label", "Switch to light mode");
+        themeBtn.setAttribute(
+            "aria-label",
+            "Switch to light mode"
+        );
 
     }
 
 }
 
 
-/* Set correct icon when page loads */
-
 updateThemeIcon();
 
 
-/* Toggle theme */
+/*=====================================
+  TOGGLE THEME
+=====================================*/
 
 if (themeBtn) {
 
@@ -114,13 +209,21 @@ if (themeBtn) {
 
         body.classList.toggle("light-theme");
 
-        if (body.classList.contains("light-theme")) {
+        if (
+            body.classList.contains("light-theme")
+        ) {
 
-            localStorage.setItem("theme", "light");
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
 
         } else {
 
-            localStorage.setItem("theme", "dark");
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
 
         }
 
@@ -144,28 +247,44 @@ const words = [
 
 ];
 
-const typing = document.getElementById("typing");
+
+const typing =
+    document.getElementById("typing");
+
 
 let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
+
 if (typing) {
 
     function typeEffect() {
 
-        const current = words[wordIndex];
+        const current =
+            words[wordIndex];
+
 
         if (!deleting) {
 
             typing.textContent =
-                current.substring(0, charIndex++);
+                current.substring(
+                    0,
+                    charIndex++
+                );
 
-            if (charIndex > current.length) {
+
+            if (
+                charIndex >
+                current.length
+            ) {
 
                 deleting = true;
 
-                setTimeout(typeEffect, 1500);
+                setTimeout(
+                    typeEffect,
+                    1500
+                );
 
                 return;
 
@@ -174,7 +293,11 @@ if (typing) {
         } else {
 
             typing.textContent =
-                current.substring(0, charIndex--);
+                current.substring(
+                    0,
+                    charIndex--
+                );
+
 
             if (charIndex < 0) {
 
@@ -182,17 +305,27 @@ if (typing) {
 
                 wordIndex++;
 
-                if (wordIndex >= words.length) {
+                if (
+                    wordIndex >=
+                    words.length
+                ) {
+
                     wordIndex = 0;
+
                 }
 
             }
 
         }
 
-        setTimeout(typeEffect, deleting ? 60 : 100);
+
+        setTimeout(
+            typeEffect,
+            deleting ? 60 : 100
+        );
 
     }
+
 
     typeEffect();
 
@@ -203,48 +336,87 @@ if (typing) {
   SMOOTH SCROLL
 =====================================*/
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
 
-    anchor.addEventListener("click", function(e) {
+        anchor.addEventListener(
+            "click",
+            function(e) {
 
-        const target = document.querySelector(
-            this.getAttribute("href")
+                const href =
+                    this.getAttribute("href");
+
+
+                if (
+                    !href ||
+                    href === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(href);
+
+
+                if (target) {
+
+                    e.preventDefault();
+
+
+                    // Close mobile menu first
+                    closeMobileMenu();
+
+
+                    // Small delay prevents menu animation
+                    // from affecting the scroll position
+                    setTimeout(() => {
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }, 50);
+
+                }
+
+            }
         );
 
-        if (target) {
-
-            e.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
     });
-
-});
 
 
 /*=====================================
   ACTIVE NAVIGATION
 =====================================*/
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".navbar a");
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll(".navbar a");
+
 
 function activeNavigation() {
 
     let currentSection = "";
 
+
     sections.forEach(section => {
 
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
+        const sectionTop =
+            section.offsetTop - 180;
+
+        const sectionHeight =
+            section.offsetHeight;
+
 
         if (
             window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
+            window.scrollY <
+                sectionTop + sectionHeight
         ) {
 
             currentSection =
@@ -254,9 +426,11 @@ function activeNavigation() {
 
     });
 
+
     navLinks.forEach(link => {
 
         link.classList.remove("active");
+
 
         if (
             link.getAttribute("href") ===
@@ -271,7 +445,13 @@ function activeNavigation() {
 
 }
 
-window.addEventListener("scroll", activeNavigation);
+
+window.addEventListener(
+    "scroll",
+    activeNavigation,
+    { passive: true }
+);
+
 
 activeNavigation();
 
@@ -283,17 +463,21 @@ activeNavigation();
 const revealElements =
     document.querySelectorAll(".reveal");
 
+
 function revealOnScroll() {
 
-    revealElements.forEach(element => {
+    const windowHeight =
+        window.innerHeight;
 
-        const windowHeight =
-            window.innerHeight;
+
+    revealElements.forEach(element => {
 
         const revealTop =
             element.getBoundingClientRect().top;
 
+
         const revealPoint = 120;
+
 
         if (
             revealTop <
@@ -308,8 +492,18 @@ function revealOnScroll() {
 
 }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll,
+    { passive: true }
+);
+
+
+window.addEventListener(
+    "load",
+    revealOnScroll
+);
 
 
 /*=====================================
@@ -319,33 +513,49 @@ window.addEventListener("load", revealOnScroll);
 const scrollBtn =
     document.getElementById("scrollTop");
 
+
 if (scrollBtn) {
 
-    window.addEventListener("scroll", () => {
+    function updateScrollButton() {
 
         if (window.scrollY > 400) {
 
-            scrollBtn.style.display = "flex";
+            scrollBtn.style.display =
+                "flex";
 
         } else {
 
-            scrollBtn.style.display = "none";
+            scrollBtn.style.display =
+                "none";
 
         }
 
-    });
+    }
 
 
-    scrollBtn.addEventListener("click", () => {
+    window.addEventListener(
+        "scroll",
+        updateScrollButton,
+        { passive: true }
+    );
 
-        window.scrollTo({
 
-            top: 0,
-            behavior: "smooth"
+    scrollBtn.addEventListener(
+        "click",
+        () => {
 
-        });
+            window.scrollTo({
 
-    });
+                top: 0,
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+
+    updateScrollButton();
 
 }
 
@@ -355,7 +565,10 @@ if (scrollBtn) {
 =====================================*/
 
 const contactForm =
-    document.getElementById("contact-form");
+    document.getElementById(
+        "contact-form"
+    );
+
 
 if (contactForm) {
 
@@ -365,16 +578,21 @@ if (contactForm) {
 
             e.preventDefault();
 
+
             const inputs =
                 this.querySelectorAll(
                     "input, textarea"
                 );
 
+
             let valid = true;
+
 
             inputs.forEach(input => {
 
-                if (input.value.trim() === "") {
+                if (
+                    input.value.trim() === ""
+                ) {
 
                     input.style.borderColor =
                         "#ef4444";
@@ -384,19 +602,33 @@ if (contactForm) {
                 } else {
 
                     input.style.borderColor =
-                        "rgba(255,255,255,.15)";
+                        "";
 
                 }
 
             });
 
+
             if (!valid) {
+
                 return;
+
             }
+
 
             this.reset();
 
-            document.activeElement.blur();
+
+            if (
+                document.activeElement &&
+                typeof document.activeElement.blur ===
+                    "function"
+            ) {
+
+                document.activeElement.blur();
+
+            }
+
 
             console.log(
                 "Message sent successfully!"
@@ -415,21 +647,36 @@ if (contactForm) {
 const header =
     document.querySelector(".header");
 
+
 if (header) {
 
-    window.addEventListener("scroll", () => {
+    function updateHeader() {
 
         if (window.scrollY > 60) {
 
-            header.classList.add("scrolled");
+            header.classList.add(
+                "scrolled"
+            );
 
         } else {
 
-            header.classList.remove("scrolled");
+            header.classList.remove(
+                "scrolled"
+            );
 
         }
 
-    });
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+
+
+    updateHeader();
 
 }
 
@@ -439,32 +686,59 @@ if (header) {
 =====================================*/
 
 const profileCard =
-    document.querySelector(".profile-card");
-
-window.addEventListener("mousemove", (e) => {
-
-    if (!profileCard) return;
-
-    const x =
-        (window.innerWidth / 2 - e.clientX) / 40;
-
-    const y =
-        (window.innerHeight / 2 - e.clientY) / 40;
-
-    profileCard.style.transform =
-        `rotateY(${x}deg) rotateX(${-y}deg)`;
-
-});
+    document.querySelector(
+        ".profile-card"
+    );
 
 
-window.addEventListener("mouseleave", () => {
+/*
+  Only run parallax on devices that
+  actually have a mouse.
+*/
 
-    if (!profileCard) return;
+if (
+    profileCard &&
+    window.matchMedia(
+        "(hover: hover)"
+    ).matches
+) {
 
-    profileCard.style.transform =
-        "rotateY(0deg) rotateX(0deg)";
+    window.addEventListener(
+        "mousemove",
+        (e) => {
 
-});
+            const x =
+                (
+                    window.innerWidth / 2 -
+                    e.clientX
+                ) / 40;
+
+
+            const y =
+                (
+                    window.innerHeight / 2 -
+                    e.clientY
+                ) / 40;
+
+
+            profileCard.style.transform =
+                `rotateY(${x}deg) rotateX(${-y}deg)`;
+
+        }
+    );
+
+
+    window.addEventListener(
+        "mouseleave",
+        () => {
+
+            profileCard.style.transform =
+                "rotateY(0deg) rotateX(0deg)";
+
+        }
+    );
+
+}
 
 
 /*=====================================
@@ -472,7 +746,10 @@ window.addEventListener("mouseleave", () => {
 =====================================*/
 
 const copyright =
-    document.querySelector(".copyright");
+    document.querySelector(
+        ".copyright"
+    );
+
 
 if (copyright) {
 
@@ -486,20 +763,80 @@ if (copyright) {
   PAGE LOADED
 =====================================*/
 
-window.addEventListener("load", () => {
+window.addEventListener(
+    "load",
+    () => {
 
-    document.body.classList.add("loaded");
+        document.body.classList.add(
+            "loaded"
+        );
 
-});
+    }
+);
 
 
 /*=====================================
   WINDOW RESIZE
 =====================================*/
 
-window.addEventListener("resize", () => {
+window.addEventListener(
+    "resize",
+    () => {
 
-    revealOnScroll();
-    activeNavigation();
+        revealOnScroll();
+        activeNavigation();
 
-});
+
+        /*
+          If screen becomes desktop,
+          automatically close mobile menu.
+        */
+
+        if (
+            window.innerWidth > 768
+        ) {
+
+            closeMobileMenu();
+
+        }
+
+    }
+);
+
+
+/*=====================================
+  PREVENT MOBILE MENU BACKGROUND SCROLL
+=====================================*/
+
+window.addEventListener(
+    "touchmove",
+    (e) => {
+
+        if (
+            document.body.classList.contains(
+                "menu-open"
+            )
+        ) {
+
+            /*
+              Allow scrolling inside the navbar
+              only if needed, but prevent the
+              background page from moving.
+            */
+
+            if (
+                navbar &&
+                navbar.contains(e.target)
+            ) {
+
+                return;
+
+            }
+
+            e.preventDefault();
+
+        }
+
+    },
+    { passive: false }
+);

@@ -98,6 +98,8 @@ body::before {
     opacity: 0.35;
 
     z-index: -2;
+
+    pointer-events: none;
 }
 
 body::after {
@@ -122,6 +124,8 @@ body::after {
     opacity: 0.28;
 
     z-index: -2;
+
+    pointer-events: none;
 }
 
 
@@ -186,6 +190,7 @@ body::after {
     background: rgba(13, 17, 23, 0.78);
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -277,6 +282,7 @@ body::after {
     font-size: 1.8rem;
 
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
     transition: 0.35s;
 }
@@ -347,6 +353,7 @@ body::after {
     background: rgba(255, 255, 255, 0.04);
 
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .btn.secondary:hover {
@@ -390,7 +397,6 @@ body::after {
 
 .hero-content {
     flex: 1;
-
     animation: fadeLeft 0.8s ease;
 }
 
@@ -492,6 +498,7 @@ body::after {
     font-size: 2rem;
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     transition: 0.35s ease;
 }
@@ -539,6 +546,7 @@ body::after {
     border: 1px solid var(--border);
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
 
@@ -579,6 +587,8 @@ body::after {
     filter: blur(40px);
 
     z-index: -1;
+
+    pointer-events: none;
 }
 
 .circle.one {
@@ -690,6 +700,7 @@ body::after {
     border: 1px solid var(--border);
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     transition: 0.35s ease;
 }
@@ -750,6 +761,7 @@ body::after {
     border: 1px solid var(--border);
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     border-radius: 22px;
 
@@ -878,6 +890,7 @@ body::after {
     border-radius: 22px;
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow: var(--shadow);
 
@@ -1027,6 +1040,7 @@ body::after {
     border-radius: 22px;
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     box-shadow: var(--shadow);
 
@@ -1140,6 +1154,7 @@ body::after {
     border-radius: 24px;
 
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow: var(--shadow);
 
@@ -1282,6 +1297,7 @@ body::after {
     color: #ffffff;
 
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     font-size: 1.6rem;
 
@@ -1469,7 +1485,6 @@ body::after {
     100% {
         transform: translateY(0);
     }
-
 }
 
 @keyframes fadeLeft {
@@ -1485,7 +1500,6 @@ body::after {
 
         transform: translateX(0);
     }
-
 }
 
 @keyframes fadeRight {
@@ -1501,7 +1515,6 @@ body::after {
 
         transform: translateX(0);
     }
-
 }
 
 
@@ -1552,9 +1565,6 @@ body.light-theme::after {
     opacity: 0.12;
 }
 
-
-/* Header */
-
 body.light-theme .header {
     background: rgba(255, 255, 255, 0.85);
 
@@ -1562,24 +1572,15 @@ body.light-theme .header {
         1px solid rgba(0, 0, 0, 0.08);
 }
 
-
-/* Navigation */
-
 body.light-theme .navbar a {
     color: #111827;
 }
-
-
-/* Navigation Buttons */
 
 body.light-theme .nav-icons button {
     color: #111827;
 
     background: rgba(0, 0, 0, 0.06);
 }
-
-
-/* Glass Cards */
 
 body.light-theme .glass,
 body.light-theme .skill-card,
@@ -1591,9 +1592,6 @@ body.light-theme .education-card {
     border-color:
         rgba(0, 0, 0, 0.1);
 }
-
-
-/* Headings */
 
 body.light-theme .hero h1,
 body.light-theme .section-title,
@@ -1607,9 +1605,6 @@ body.light-theme .footer h3 {
     color: #111827;
 }
 
-
-/* Secondary Text */
-
 body.light-theme .hero h2,
 body.light-theme .hero-description,
 body.light-theme .about-content p,
@@ -1621,9 +1616,6 @@ body.light-theme .contact-info p {
     color: #4b5563;
 }
 
-
-/* Social Icons */
-
 body.light-theme .social-icons a {
     background: rgba(0, 0, 0, 0.05);
 
@@ -1633,18 +1625,12 @@ body.light-theme .social-icons a {
     color: #111827;
 }
 
-
-/* About Information */
-
 body.light-theme .about-info div {
     background: rgba(255, 255, 255, 0.7);
 
     border-color:
         rgba(0, 0, 0, 0.1);
 }
-
-
-/* Secondary Button */
 
 body.light-theme .btn.secondary {
     color: #111827;
@@ -1654,9 +1640,6 @@ body.light-theme .btn.secondary {
 
     background: rgba(0, 0, 0, 0.04);
 }
-
-
-/* Contact Form */
 
 body.light-theme #contact-form input,
 body.light-theme #contact-form textarea {
@@ -1668,16 +1651,10 @@ body.light-theme #contact-form textarea {
         rgba(0, 0, 0, 0.15);
 }
 
-
-/* Contact Placeholder */
-
 body.light-theme #contact-form input::placeholder,
 body.light-theme #contact-form textarea::placeholder {
     color: #6b7280;
 }
-
-
-/* Footer */
 
 body.light-theme .footer {
     background: #e9edf3;
@@ -1695,9 +1672,6 @@ body.light-theme .footer-social a {
 body.light-theme .copyright {
     color: #6b7280;
 }
-
-
-/* Journey */
 
 body.light-theme .journey-intro {
     color: #4b5563;
@@ -1755,7 +1729,6 @@ body.light-theme .timeline p {
     .about-image {
         order: -1;
     }
-
 }
 
 
@@ -1769,36 +1742,137 @@ body.light-theme .timeline p {
         font-size: 56%;
     }
 
-    #menu-btn {
-        display: flex;
-    }
+    /* MOBILE HEADER FIX */
 
-    .navbar {
-        position: absolute;
-
-        top: 100%;
+    .header {
+        position: fixed;
+        top: 0;
         left: 0;
 
         width: 100%;
 
-        background: #111827;
+        padding: 15px 5%;
 
-        display: none;
+        min-height: 70px;
+    }
+
+    #menu-btn {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+    }
+
+    /*
+      IMPORTANT:
+      The navbar is fixed to the viewport instead of
+      being absolute inside the scrolling page.
+    */
+
+    .navbar {
+        position: fixed;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        max-height: calc(100vh - 70px);
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        background: rgba(17, 24, 39, 0.98);
+
+        display: flex;
 
         flex-direction: column;
 
-        padding: 25px 0;
+        align-items: center;
+
+        gap: 0;
+
+        padding: 15px 0 25px;
 
         border-top:
             1px solid rgba(255, 255, 255, 0.08);
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.35);
+
+        z-index: 999;
+
+        /*
+          Prevent the menu itself from moving
+          horizontally while scrolling.
+        */
+        transform: translateX(0);
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
     }
 
+    /*
+      Hidden state
+    */
+
+    .navbar:not(.active) {
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+    }
+
+    /*
+      Open state
+    */
+
     .navbar.active {
-        display: flex;
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
     }
 
     .navbar a {
-        padding: 15px 0;
+        width: 100%;
+
+        padding: 16px 20px;
+
+        text-align: center;
+
+        font-size: 1.7rem;
+    }
+
+    .navbar a::after {
+        display: none;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        background: rgba(99, 102, 241, 0.12);
+
+        color: var(--accent);
+    }
+
+    /*
+      Prevent page scrolling from causing
+      weird horizontal movement.
+    */
+
+    body.menu-open {
+        overflow: hidden;
     }
 
     .hero {
@@ -1860,12 +1934,22 @@ body.light-theme .timeline p {
     }
 
     body.light-theme .navbar {
-        background: #ffffff;
+        background: rgba(255, 255, 255, 0.98);
 
         border-top-color:
             rgba(0, 0, 0, 0.08);
+
+        border-bottom-color:
+            rgba(0, 0, 0, 0.08);
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.12);
     }
 
+    body.light-theme .navbar a:hover,
+    body.light-theme .navbar a.active {
+        background: rgba(99, 102, 241, 0.08);
+    }
 }
 
 
@@ -1937,4 +2021,9 @@ body.light-theme .timeline p {
         height: 48px;
     }
 
+    .navbar {
+        top: 65px;
+
+        max-height: calc(100vh - 65px);
+    }
 }
