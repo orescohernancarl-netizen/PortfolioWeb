@@ -5,40 +5,53 @@
 const menuBtn = document.getElementById("menu-btn");
 const navbar = document.getElementById("navbar");
 
-menuBtn.addEventListener("click", () => {
+if (menuBtn && navbar) {
 
-    navbar.classList.toggle("active");
+    menuBtn.addEventListener("click", () => {
 
-    const icon = menuBtn.querySelector("i");
+        navbar.classList.toggle("active");
 
-    if (navbar.classList.contains("active")) {
+        const icon = menuBtn.querySelector("i");
 
-        icon.classList.replace("fa-bars", "fa-xmark");
+        if (icon) {
 
-    } else {
+            if (navbar.classList.contains("active")) {
+                icon.classList.replace("fa-bars", "fa-xmark");
+            } else {
+                icon.classList.replace("fa-xmark", "fa-bars");
+            }
 
-        icon.classList.replace("fa-xmark", "fa-bars");
+        }
 
-    }
+    });
 
-});
+}
+
 
 /*=====================================
   CLOSE MENU WHEN LINK IS CLICKED
 =====================================*/
 
-document.querySelectorAll(".navbar a").forEach(link => {
+if (navbar && menuBtn) {
 
-    link.addEventListener("click", () => {
+    document.querySelectorAll(".navbar a").forEach(link => {
 
-        navbar.classList.remove("active");
+        link.addEventListener("click", () => {
 
-        menuBtn.querySelector("i")
-            .classList.replace("fa-xmark", "fa-bars");
+            navbar.classList.remove("active");
+
+            const icon = menuBtn.querySelector("i");
+
+            if (icon) {
+                icon.classList.replace("fa-xmark", "fa-bars");
+            }
+
+        });
 
     });
 
-});
+}
+
 
 /*=====================================
   THEME TOGGLE
@@ -47,36 +60,76 @@ document.querySelectorAll(".navbar a").forEach(link => {
 const themeBtn = document.getElementById("theme-toggle");
 const body = document.body;
 
-if (localStorage.getItem("theme") === "light") {
+
+/* Set theme when page loads */
+
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
 
     body.classList.add("light-theme");
 
-    themeBtn.innerHTML =
-        '<i class="fa-solid fa-sun"></i>';
+} else {
+
+    body.classList.remove("light-theme");
 
 }
 
-themeBtn.addEventListener("click", () => {
 
-    body.classList.toggle("light-theme");
+/* Update theme button icon */
+
+function updateThemeIcon() {
+
+    if (!themeBtn) return;
 
     if (body.classList.contains("light-theme")) {
-
-        localStorage.setItem("theme", "light");
 
         themeBtn.innerHTML =
             '<i class="fa-solid fa-sun"></i>';
 
-    } else {
+        themeBtn.setAttribute("aria-label", "Switch to dark mode");
 
-        localStorage.setItem("theme", "dark");
+    } else {
 
         themeBtn.innerHTML =
             '<i class="fa-solid fa-moon"></i>';
 
+        themeBtn.setAttribute("aria-label", "Switch to light mode");
+
     }
 
-});
+}
+
+
+/* Set correct icon when page loads */
+
+updateThemeIcon();
+
+
+/* Toggle theme */
+
+if (themeBtn) {
+
+    themeBtn.addEventListener("click", () => {
+
+        body.classList.toggle("light-theme");
+
+        if (body.classList.contains("light-theme")) {
+
+            localStorage.setItem("theme", "light");
+
+        } else {
+
+            localStorage.setItem("theme", "dark");
+
+        }
+
+        updateThemeIcon();
+
+    });
+
+}
+
 
 /*=====================================
   TYPING EFFECT
@@ -85,11 +138,8 @@ themeBtn.addEventListener("click", () => {
 const words = [
 
     "Full Stack Web Developer",
-
     "Front-End Developer",
-
     "Back-End Developer",
-
     "BSIT Student"
 
 ];
@@ -100,51 +150,55 @@ let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-function typeEffect() {
+if (typing) {
 
-    const current = words[wordIndex];
+    function typeEffect() {
 
-    if (!deleting) {
+        const current = words[wordIndex];
 
-        typing.textContent =
-            current.substring(0, charIndex++);
+        if (!deleting) {
 
-        if (charIndex > current.length) {
+            typing.textContent =
+                current.substring(0, charIndex++);
 
-            deleting = true;
+            if (charIndex > current.length) {
 
-            setTimeout(typeEffect, 1500);
+                deleting = true;
 
-            return;
+                setTimeout(typeEffect, 1500);
 
-        }
+                return;
 
-    } else {
+            }
 
-        typing.textContent =
-            current.substring(0, charIndex--);
+        } else {
 
-        if (charIndex < 0) {
+            typing.textContent =
+                current.substring(0, charIndex--);
 
-            deleting = false;
+            if (charIndex < 0) {
 
-            wordIndex++;
+                deleting = false;
 
-            if (wordIndex >= words.length) {
+                wordIndex++;
 
-                wordIndex = 0;
+                if (wordIndex >= words.length) {
+                    wordIndex = 0;
+                }
 
             }
 
         }
 
+        setTimeout(typeEffect, deleting ? 60 : 100);
+
     }
 
-    setTimeout(typeEffect, deleting ? 60 : 100);
+    typeEffect();
 
 }
 
-typeEffect();
+
 /*=====================================
   SMOOTH SCROLL
 =====================================*/
@@ -153,16 +207,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     anchor.addEventListener("click", function(e) {
 
-        e.preventDefault();
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
 
-        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
 
-        if(target){
+            e.preventDefault();
 
             target.scrollIntoView({
-
                 behavior: "smooth"
-
             });
 
         }
@@ -170,6 +224,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 /*=====================================
   ACTIVE NAVIGATION
@@ -187,10 +242,13 @@ function activeNavigation() {
         const sectionTop = section.offsetTop - 150;
         const sectionHeight = section.offsetHeight;
 
-        if (window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight) {
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
 
-            currentSection = section.getAttribute("id");
+            currentSection =
+                section.getAttribute("id");
 
         }
 
@@ -200,7 +258,10 @@ function activeNavigation() {
 
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + currentSection) {
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
 
             link.classList.add("active");
 
@@ -211,23 +272,33 @@ function activeNavigation() {
 }
 
 window.addEventListener("scroll", activeNavigation);
+
 activeNavigation();
+
 
 /*=====================================
   SCROLL REVEAL ANIMATION
 =====================================*/
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealElements =
+    document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
 
     revealElements.forEach(element => {
 
-        const windowHeight = window.innerHeight;
-        const revealTop = element.getBoundingClientRect().top;
+        const windowHeight =
+            window.innerHeight;
+
+        const revealTop =
+            element.getBoundingClientRect().top;
+
         const revealPoint = 120;
 
-        if (revealTop < windowHeight - revealPoint) {
+        if (
+            revealTop <
+            windowHeight - revealPoint
+        ) {
 
             element.classList.add("active");
 
@@ -239,120 +310,152 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
+
 /*=====================================
   SCROLL TO TOP BUTTON
 =====================================*/
 
-const scrollBtn = document.getElementById("scrollTop");
+const scrollBtn =
+    document.getElementById("scrollTop");
 
-window.addEventListener("scroll", () => {
+if (scrollBtn) {
 
-    if (window.scrollY > 400) {
+    window.addEventListener("scroll", () => {
 
-        scrollBtn.style.display = "flex";
+        if (window.scrollY > 400) {
 
-    } else {
+            scrollBtn.style.display = "flex";
 
-        scrollBtn.style.display = "none";
+        } else {
 
-    }
-
-});
-
-scrollBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-        behavior: "smooth"
-
-    });
-
-});
-
-/*=====================================
-  CONTACT FORM
-=====================================*/
-const contactForm = document.getElementById("contact-form");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function(e) {
-
-        e.preventDefault();
-
-        const inputs = this.querySelectorAll("input, textarea");
-
-        let valid = true;
-
-        inputs.forEach(input => {
-
-            if (input.value.trim() === "") {
-
-                input.style.borderColor = "#ef4444";
-                valid = false;
-
-            } else {
-
-                input.style.borderColor = "rgba(255,255,255,.15)";
-
-            }
-
-        });
-
-        if (!valid) {
-
-            return;
+            scrollBtn.style.display = "none";
 
         }
 
-        this.reset();
+    });
 
-        // Remove focus from the button
-        document.activeElement.blur();
 
-        console.log("Message sent successfully!");
+    scrollBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top: 0,
+            behavior: "smooth"
+
+        });
 
     });
 
 }
+
+
+/*=====================================
+  CONTACT FORM
+=====================================*/
+
+const contactForm =
+    document.getElementById("contact-form");
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        function(e) {
+
+            e.preventDefault();
+
+            const inputs =
+                this.querySelectorAll(
+                    "input, textarea"
+                );
+
+            let valid = true;
+
+            inputs.forEach(input => {
+
+                if (input.value.trim() === "") {
+
+                    input.style.borderColor =
+                        "#ef4444";
+
+                    valid = false;
+
+                } else {
+
+                    input.style.borderColor =
+                        "rgba(255,255,255,.15)";
+
+                }
+
+            });
+
+            if (!valid) {
+                return;
+            }
+
+            this.reset();
+
+            document.activeElement.blur();
+
+            console.log(
+                "Message sent successfully!"
+            );
+
+        }
+    );
+
+}
+
+
 /*=====================================
   HEADER SHADOW
 =====================================*/
 
-const header = document.querySelector(".header");
+const header =
+    document.querySelector(".header");
 
-window.addEventListener("scroll", () => {
+if (header) {
 
-    if (window.scrollY > 60) {
+    window.addEventListener("scroll", () => {
 
-        header.classList.add("scrolled");
+        if (window.scrollY > 60) {
 
-    } else {
+            header.classList.add("scrolled");
 
-        header.classList.remove("scrolled");
+        } else {
 
-    }
+            header.classList.remove("scrolled");
 
-});
+        }
+
+    });
+
+}
+
 
 /*=====================================
   HERO PARALLAX
 =====================================*/
 
-const profileCard = document.querySelector(".profile-card");
+const profileCard =
+    document.querySelector(".profile-card");
 
 window.addEventListener("mousemove", (e) => {
 
     if (!profileCard) return;
 
-    const x = (window.innerWidth / 2 - e.clientX) / 40;
-    const y = (window.innerHeight / 2 - e.clientY) / 40;
+    const x =
+        (window.innerWidth / 2 - e.clientX) / 40;
+
+    const y =
+        (window.innerHeight / 2 - e.clientY) / 40;
 
     profileCard.style.transform =
         `rotateY(${x}deg) rotateX(${-y}deg)`;
 
 });
+
 
 window.addEventListener("mouseleave", () => {
 
@@ -363,11 +466,13 @@ window.addEventListener("mouseleave", () => {
 
 });
 
+
 /*=====================================
   AUTO UPDATE COPYRIGHT YEAR
 =====================================*/
 
-const copyright = document.querySelector(".copyright");
+const copyright =
+    document.querySelector(".copyright");
 
 if (copyright) {
 
@@ -375,6 +480,7 @@ if (copyright) {
         `© ${new Date().getFullYear()} Hernan Oresco. All Rights Reserved.`;
 
 }
+
 
 /*=====================================
   PAGE LOADED
@@ -385,6 +491,7 @@ window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 
 });
+
 
 /*=====================================
   WINDOW RESIZE

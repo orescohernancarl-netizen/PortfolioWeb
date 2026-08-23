@@ -1727,3 +1727,233 @@ transform:translateY(0);
     var(--primary));
 
 }
+/*==================================================
+  LIGHT THEME
+==================================================*/
+
+body.light-theme {
+
+    background:#f5f7fb;
+
+    color:#111827;
+
+}
+
+
+/* Background glow */
+
+body.light-theme::before {
+
+    opacity:.15;
+
+}
+
+body.light-theme::after {
+
+    opacity:.12;
+
+}
+
+
+/* Header */
+
+body.light-theme .header {
+
+    background:rgba(255,255,255,.85);
+
+    border-bottom:1px solid rgba(0,0,0,.08);
+
+}
+
+
+/* Navigation */
+
+body.light-theme .navbar a {
+
+    color:#111827;
+
+}
+
+
+/* Theme / menu buttons */
+
+body.light-theme .nav-icons button {
+
+    color:#111827;
+
+    background:rgba(0,0,0,.06);
+
+}
+
+
+/* Glass cards */
+
+body.light-theme .glass,
+body.light-theme .skill-card,
+body.light-theme .project-card,
+body.light-theme .timeline-item,
+body.light-theme .education-card {
+
+    background:rgba(255,255,255,.65);
+
+    border-color:rgba(0,0,0,.10);
+
+}
+
+
+/* Headings */
+
+body.light-theme .hero h1,
+body.light-theme .section-title,
+body.light-theme .about-content h3,
+body.light-theme .skill-card h3,
+body.light-theme .project-content h3,
+body.light-theme .timeline h3,
+body.light-theme .education-card h3,
+body.light-theme .contact-info h3,
+body.light-theme .footer h3 {
+
+    color:#111827;
+
+}
+
+
+/* Secondary text */
+
+body.light-theme .hero h2,
+body.light-theme .hero-description,
+body.light-theme .about-content p,
+body.light-theme .skill-card p,
+body.light-theme .project-content p,
+body.light-theme .timeline p,
+body.light-theme .education-card p,
+body.light-theme .contact-info p {
+
+    color:#4b5563;
+
+}
+
+
+/* Hero description */
+
+body.light-theme .hero-description {
+
+    color:#4b5563;
+
+}
+
+
+/* Social icons */
+
+body.light-theme .social-icons a {
+
+    background:rgba(0,0,0,.05);
+
+    border-color:rgba(0,0,0,.10);
+
+    color:#111827;
+
+}
+
+
+/* About information */
+
+body.light-theme .about-info div {
+
+    background:rgba(255,255,255,.7);
+
+    border-color:rgba(0,0,0,.10);
+
+}
+
+
+/* Buttons */
+
+body.light-theme .btn.secondary {
+
+    color:#111827;
+
+    border-color:rgba(0,0,0,.15);
+
+    background:rgba(0,0,0,.04);
+
+}
+
+
+/* Contact form */
+
+body.light-theme #contact-form input,
+body.light-theme #contact-form textarea {
+
+    background:rgba(255,255,255,.8);
+
+    color:#111827;
+
+    border-color:rgba(0,0,0,.15);
+
+}
+
+
+/* Contact placeholder */
+
+body.light-theme #contact-form input::placeholder,
+body.light-theme #contact-form textarea::placeholder {
+
+    color:#6b7280;
+
+}
+
+
+/* Footer */
+
+body.light-theme .footer {
+
+    background:#e9edf3;
+
+    border-top:1px solid rgba(0,0,0,.08);
+
+}
+
+
+/* Footer social */
+
+body.light-theme .footer-social a {
+
+    color:#111827;
+
+    background:rgba(0,0,0,.05);
+
+}
+
+
+/* Copyright */
+
+body.light-theme .copyright {
+
+    color:#6b7280;
+
+}
+
+
+/* Timeline dot border */
+
+body.light-theme .timeline-item::before {
+
+    border-color:#f5f7fb;
+
+}
+
+
+/* Mobile menu */
+
+@media(max-width:768px) {
+
+    body.light-theme .navbar {
+
+        background:#ffffff;
+
+        border-top-color:rgba(0,0,0,.08);
+
+    }
+
+}
