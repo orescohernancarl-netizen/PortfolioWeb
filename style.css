@@ -200,8 +200,10 @@ body::after {
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .logo span {
