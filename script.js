@@ -684,10 +684,7 @@ const profileCard =
     );
 
 
-/*
-  Only run parallax on devices that
-  actually have a mouse.
-*/
+
 
 if (
     profileCard &&
